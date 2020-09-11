@@ -230,3 +230,27 @@ body {
 .info {
     padding: 10px;
 }
+
+/* Gustavo */
+
+.videos {
+    width: 180px;
+    padding: 20px;
+    margin-right: 170px;
+}
+
+.contenedor-autor{
+    display: flex;
+    flex-flow: row;
+    margin-left: -11%;
+    margin-top: -20%;
+    margin-bottom: -65%;
+}
+.imagen-autor {
+    width: 35%;
+    border-radius: 212px;
+    padding: 15px;
+}
+.nombre-usuario{
+    margin: auto;
+}
