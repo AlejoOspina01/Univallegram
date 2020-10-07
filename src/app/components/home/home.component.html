@@ -12,38 +12,34 @@
         <div class="profesores">
             <h1>Últimos videos</h1>
             <div class="cajaGrande">
-                <div class="videos">
-                    <!--<img class="imagen" src="img/user.png" alt="">-->
-                    <iframe width="360" height="315" src="https://www.youtube.com/embed/qpWSsYcg0n4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="videos" style="display: flex;
+                flex-flow: row; margin-left: -63%; "><!--NGfor -->
+                    <div class="card"style="width: 5rem;" *ngFor="let video of videos" style="margin-right: 148%;">
+                        <img class="card-img-top" [src]="video.thumbnails.high.url" style="width: 270%;" alt="Card image cap">
+                        <div class="card-body" style="width: 214%;">
+                          <h5 class="card-title">{{video.title}}</h5>
+                          <p class="card-text">
+                              <strong>Autor:</strong>{{video.channelTitle}}
+                          </p>
+                          <p class="card-text">
+                            <strong>Publicado</strong>{{video.publishedAt | date}}
+                        </p>
+                          <button class="btn btn-outline-primary btn-block">
+                              Ver video
+
+                          </button>
+                        </div>
+                      </div>
+                    <!--<iframe width="360" height="315" src="https://www.youtube.com/embed/qpWSsYcg0n4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <h2>Titulo Video</h2>
                     <div class="contenedor-autor">
                         <img class="imagen-autor" src="assets/img/user.png" alt="">
                         <h3 class="nombre-usuario">Usuario 1</h3>
-                    </div>
-                </div>
-                <div class="videos">
-                    <!--<img class="imagen" src="img/user.png" alt="">-->
-                    <iframe width="360" height="315" src="https://www.youtube.com/embed/qpWSsYcg0n4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <h2>Titulo Video</h2>
-                    <div class="contenedor-autor" >
-                        <img class="imagen-autor" src="assets/img/user.png" alt="">
-                        <h3 class="nombre-usuario">Usuario 1</h3>
-                    </div>
-                </div>
-                <div class="videos">
-                    <iframe width="360" height="315" src="https://www.youtube.com/embed/qpWSsYcg0n4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <h2>Titulo Video</h2>
-                    <div class="contenedor-autor">
-                    <img class="imagen-autor" src="assets/img/user.png" alt="">
-                    <h3 class="nombre-usuario">Usuario 1</h3>
+                    </div>-->
                 </div>
                 </div>
-                <!--<button name="prev">go to previous div</button>
-                <button name="next">go to next div</button>-->
             </div>
         </div>
-        
-    </div>
 
     <div id="contenido" class="container">
         <div class="profesores">
