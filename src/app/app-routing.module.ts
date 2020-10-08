@@ -5,7 +5,7 @@ import { ViewVideoComponent } from './components/video/view-video/view-video.com
 
 const routes: Routes = [
   {path: 'home',component: HomeComponent},
-  {path: 'viewvideo',component: ViewVideoComponent},
+  {path: 'viewvideo/:id',component: ViewVideoComponent},
   {path:'**',component:HomeComponent},
   {path: '',pathMatch: 'full',redirectTo: 'home'},
   

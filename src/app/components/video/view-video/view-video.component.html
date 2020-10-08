@@ -2,67 +2,117 @@
  <div class="wrap">
         <div id="menuLateral" class="barralateral">
             <ul class="ulItemsLateral">
-                <li class="litemMenuLateral"><i class="icofont-home itemIconLateral"></i>
-                    <p class="itemInicio">Inicio</p>
-                </li>
-                <li class="litemMenuLateral"><i class="icofont-favourite itemIconLateral"></i>
-                    <p class="itemInicio">Favoritos</p>
-                </li>
-                <li class="litemMenuLateral"><i class="icofont-chat itemIconLateral"></i>
-                    <p class="itemInicio">Mensajes</p>
-                </li>
-                <li class="litemMenuLateral"><i class="icofont-live-support itemIconLateral"></i>
-                    <p class="itemInicio">Soporte</p>
+                <li class="litemMenuLateral" routerLink="/home" routerLinkActive="active">
+                    <a ><i class="icofont-home itemIconLateral"></i>
+                        <p class="itemInicio">Inicio</p>
+                    </a>
                 </li>
             </ul>
         </div>
         <div id="contenido" class="container">
             <div class="cajaGrande">
-                <div class="canal">
-                    <img class="imagen" src="assets/img/user.png" alt="">
-                    <h2>Nombre Canal</h2>
+                <div class="canal" *ngIf="auth.user | async as user;">
+                    <img class="imagen" [src]="user.photoURL" alt="">
+                    <h2>{{user.displayName}}</h2>
                     <button id="suscribirse" type="button" class="btn btn-default">
                         <i class="icofont-user-alt-7"></i>
                         Suscribirse</button>
                 </div>
                 <div class="video">
-                    <iframe width="460" height="315" src="https://www.youtube.com/embed/450p7goxZqg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <iframe width="460" height="315" [src]='url | safe' frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
                 </div>
                 <div class="info-video">
                     <div class="titulo">
-                        <h2>Titulo video</h2>
-                        <h5>31/07/2020</h5>
+                        <h2>{{videoSel.title}}</h2>
+                        <h5>{{videoSel.publishedAt | date}}</h5>
                     </div>
 
                     <button id="material" type="button" class="btn btn-default">
                         <i class="icofont-ui-file"></i>
                         Material</button>
                     <div class="clearfix"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ratione quisquam pariatur molestias corporis, blanditiis rem placeat. Quam excepturi in qui vero dolores ut aperiam dolorum id mollitia, architecto natus quos maiores
-                        soluta? Distinctio nemo reprehenderit explicabo libero.</p>
+                    <p class="descripcionVideosel">{{videoSel.description}}</p>
                 </div>
             </div>
             <h2>Videos Relacionados</h2>
             <div class="videosRelacionados">
-                <div class="videoR">
-                    <iframe width="360" height="215" src="https://www.youtube.com/embed/450p7goxZqg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <h3>Titulo del video</h3>
+                <div class="videoR" *ngFor="let videorep of videos">
+                    <iframe width="360" height="215" [src]='videoUrl(videorep.resourceId.videoId) | safe' frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <h3>{{videorep.title}}</h3>
                     <img class="imagen2" src="assets/img/user.png" alt="">
-                    <h4>Nombre Canal</h4>
+                    <h4>{{videorep.channelTitle}}</h4>
                 </div>
-                <div class="videoR">
-                    <iframe width="360" height="215" src="https://www.youtube.com/embed/450p7goxZqg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <h3>Titulo del video</h3>
-                    <img class="imagen2" src="assets/img/user.png" alt="">
-                    <h4>Nombre Canal</h4>
+            </div>
+                    <div class="comentarios">
+            <div class="tituloComentarios">
+                <h1>Comentarios</h1>
+            </div>
+            <div class="cajaComentarios">
+                <div class="cajaPersonal" *ngIf="auth.user | async as user;">
+                        <img [src]="user.photoURL" alt="" class="imgPerfilComent">
+                        <input type="text" name="" [(ngModel)]="mensaje" class="inputComentpersonal" placeholder="Escribe tu comentario" >
+                        <div class="buttonComentar">
+                            <button class="botonComentarpersonal"  placeholder="Enviar mensaje" (click)="enviarMensaje()"><i class="icofont-comment"></i>Comentar</button>
+                        </div>
                 </div>
-                <div class="videoR">
-                    <iframe width="360" height="215" src="https://www.youtube.com/embed/450p7goxZqg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <h3>Titulo del video</h3>
-                    <img class="imagen2" src="assets/img/user.png" alt="">
-                    <h4>Nombre Canal</h4>
+                <div class="comentariosRepetidos" id="app-mensajes">
+
+                    <div class="comentario" *ngFor="let chat of chatservice.chats">
+                        <div class="imgComentrepit">
+                            <img class="imagenComentrepiit" [src]="chat.linkimg" alt="">
+                         </div>
+                         <div class="contenidoComentrepit">
+                            <div>
+                                <strong>{{chat.nombre}} • </strong> <small>{{chat.fecha | date}}</small>
+                            </div>
+                            <p>{{chat.mensaje}}</p>
+                            <div class="reacciones">
+                                <i class="icofont-star starllena"></i><strong class="puntuacionpositiva">60</strong>
+                                <i class="icofont-star starvacia"></i><strong class="puntuacionnegativa">2</strong>
+                                <i class="icofont-undo"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+<!--                     <div class="comentario">
+                        <div class="imgComentrepit">
+                            <img class="imagenComentrepiit" src="assets/img/user.png" alt="">
+                         </div>
+                         <div class="contenidoComentrepit">
+                            <div>
+                                <strong>MemeChino1 • </strong> <small>31/07/2020</small>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, labore quae, accusamus repudiandae maiores voluptatem.</p>
+                            <div class="reacciones">
+                                <i class="icofont-star starllena"></i><strong class="puntuacionpositiva">4</strong>
+                                <i class="icofont-star starvacia"></i><strong class="puntuacionnegativa"></strong>
+                                <i class="icofont-undo"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comentario">
+                        <div class="imgComentrepit">
+                            <img class="imagenComentrepiit" src="assets/img/user.png" alt="">
+                         </div>
+                         <div class="contenidoComentrepit">
+                            <div>
+                                <strong>AnonChannel100 • </strong> <small>31/07/2020</small>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, labore quae, accusamus repudiandae maiores voluptatem.</p>
+                            <div class="reacciones">
+                                <i class="icofont-star starllena"></i><strong class="puntuacionpositiva">15</strong>
+                                <i class="icofont-star starvacia"></i><strong class="puntuacionnegativa">1</strong>
+                                <i class="icofont-undo"></i>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </div>
+        </div>
+
     </div>
 <app-footer></app-footer>
