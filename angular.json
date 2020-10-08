@@ -19,6 +19,25 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "allowedCommonJsDependencies": [
+                            "lodash",
+                            "firebase",
+                            "fire/auth",
+                            "@angular/common/locales/fr",
+                            "lodash/dropRight",
+                            "@angular/fire/auth",
+                            "angular/fire/auth",
+                            "@firebase/app",
+                            "firebase/app",
+                            "@firebase/database",
+                            "@firebase/firestore",
+                            "@firebase/functions",
+                            "@firebase/performance",
+                            "@firebase/remote-config",                            
+                            "@firebase/util", 
+                            "@firebase/component", 
+                            "@firebase/auth"
+                        ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

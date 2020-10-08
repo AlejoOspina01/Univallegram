@@ -7,6 +7,9 @@ import { NavbarComponent } from './components/template/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ViewVideoComponent } from './components/video/view-video/view-video.component';
 import { FooterComponent } from './components/template/footer/footer.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { FooterComponent } from './components/template/footer/footer.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AppRoutingModule
   ],
   providers: [],
