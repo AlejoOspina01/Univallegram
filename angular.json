@@ -31,6 +31,8 @@
                             "firebase/app",
                             "@firebase/database",
                             "@firebase/firestore",
+                            "@angular/fire/firestore",
+                            "angular/fire/firestore",
                             "@firebase/functions",
                             "@firebase/performance",
                             "@firebase/remote-config",                            

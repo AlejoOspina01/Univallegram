@@ -9,3 +9,14 @@
     color: white;
     cursor: pointer;
 }
+
+.imgPerfil{
+	width: 25px;
+	border-radius: 50%;
+}
+
+.botonOptionNavbar{
+	vertical-align: super;
+}
+
+

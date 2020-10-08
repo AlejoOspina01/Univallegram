@@ -1,46 +1,30 @@
 <app-navbar></app-navbar>
 <div class="wrap">
-    <div id="menuLateral" class="barralateral">
-        <ul class="ulItemsLateral">
-            <li class="litemMenuLateral"><i class="icofont-home itemIconLateral"></i> <p class="itemInicio">Inicio</p></li>
-            <li class="litemMenuLateral"><i class="icofont-favourite itemIconLateral"></i> <p class="itemInicio">Favoritos</p></li>
-            <li class="litemMenuLateral"><i class="icofont-chat itemIconLateral" ></i> <p class="itemInicio">Mensajes</p></li>
-            <li class="litemMenuLateral"><i class="icofont-live-support itemIconLateral"></i> <p class="itemInicio">Soporte</p></li>
-        </ul>
-    </div>
     <div id="contenido" class="container">
         <div class="profesores">
             <h1>Últimos videos</h1>
-            <div class="cajaGrande">
+        <div class="cajaGrande">
                 <div class="videos" style="display: flex;
                 flex-flow: row; margin-left: -63%; "><!--NGfor -->
-                    <div class="card"style="width: 5rem;" *ngFor="let video of videos" style="margin-right: 148%;">
+                    <div class="card"style="width: 5rem;" *ngFor="let video of videos" style="margin-right: 148%; text-align: center;">
                         <img class="card-img-top" [src]="video.thumbnails.high.url" style="width: 270%;" alt="Card image cap">
-                        <div class="card-body" style="width: 214%;">
-                          <h5 class="card-title">{{video.title}}</h5>
-                          <p class="card-text">
-                              <strong>Autor:</strong>{{video.channelTitle}}
+                        <div class="card-body" style="width: 250%;">
+                          <h4 class="card-title" style="text-align: left;"><i class="icofont-retro-music-disk" style="margin-right: 1.5%; font-size:18px;"></i>{{video.title}}</h4>
+                          <p class="card-text"style="text-align: left;">
+                            <i class="icofont-user-male" style="margin-right: 1.5%;font-size:18px;" ></i>{{video.channelTitle}}
                           </p>
-                          <p class="card-text">
-                            <strong>Publicado</strong>{{video.publishedAt | date}}
+                          <p class="card-text" style="text-align: left;">
+                            <i class="icofont-clock-time" style="margin-right: 1.5%;font-size:18px;"></i>{{video.publishedAt | date}}
                         </p>
-                          <button class="btn btn-outline-primary btn-block">
+                        <button *ngIf="auth.user | async as user;" routerLink="/viewvideo/{{video.resourceId.videoId}}" class="btn btn-outline-primary btn-block">
                               Ver video
-
                           </button>
                         </div>
                       </div>
-                    <!--<iframe width="360" height="315" src="https://www.youtube.com/embed/qpWSsYcg0n4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <h2>Titulo Video</h2>
-                    <div class="contenedor-autor">
-                        <img class="imagen-autor" src="assets/img/user.png" alt="">
-                        <h3 class="nombre-usuario">Usuario 1</h3>
-                    </div>-->
                 </div>
                 </div>
             </div>
         </div>
-
     <div id="contenido" class="container">
         <div class="profesores">
             <h1>Profesores más vistos</h1>

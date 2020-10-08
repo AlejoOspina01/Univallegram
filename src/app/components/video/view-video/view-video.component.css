@@ -227,6 +227,7 @@ body {
     margin: 0;
     padding: 10px;
     transition: all 1s;
+    cursor: pointer;
 }
 
 
@@ -338,4 +339,85 @@ h4 {
 
 .info {
     padding: 10px;
+}
+
+/*Comentarios*/
+
+.imgComentrepit , .contenidoComentrepit{
+    display: inline-block;
+}
+
+.imgComentrepit{
+    float: left;
+    height: 98px;
+    margin-right: 15px;
+}
+
+.imagenComentrepiit{
+    margin-top: 22px;
+    width: 64px;
+    border-radius: 50%;
+}
+
+.comentario{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.puntuacionpositiva,.puntuacionnegativa{
+    margin-right: 10px;
+}
+.starllena{
+    color: yellow;
+}
+.starvacia{
+    color: red;
+}
+
+.imgPerfilComent{
+    width: 40px;
+    border-radius: 50%;
+}
+
+.inputComentpersonal{
+    vertical-align: super;
+    border: none;
+    border-bottom: 3px solid black;
+    margin-left: 5px;
+    width: 95%;
+    padding-top: 22px;
+    font-size: 15px;
+    transition: all .3s;
+}
+
+.inputComentpersonal:focus{
+    outline: none;
+    border-bottom: 3px solid rgb(209, 30, 36);
+}
+
+.botonComentarpersonal{
+    border:none;
+    padding: 15px;
+    margin-top: 10px;
+    margin-left: 45px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.botonComentarpersonal:hover{
+    background:rgb(209, 30, 36); 
+    color: white;
+}
+
+.tituloComentarios h1{
+    display: inline-block;
+    border-bottom: 3px solid black;
+    width: 15%;
+    padding-bottom: 5px;
+    box-shadow: 4px 14px 20px -11px #ccc;
+}
+
+.descripcionVideosel{
+    height: 137px;
+    overflow-y: hidden;
 }

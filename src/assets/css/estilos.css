@@ -70,6 +70,7 @@ body {
     padding-top: 5px;
     padding-bottom: 5px;
     animation: entradaOptions 0.2s;
+    width: 500%;
 }
 .botonBuscarLupa {
     border-right: 1px solid #cccccc78;

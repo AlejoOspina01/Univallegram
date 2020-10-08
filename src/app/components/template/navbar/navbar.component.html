@@ -15,18 +15,14 @@
     <!-- Iniciado sesion -->
     <div class="right" *ngIf="auth.user | async as user; else showLogin">
         <a  class="botonUserNavbar" >
-            <i class="icofont-user"></i>
+            <img [src]="user.photoURL" alt="" class="imgPerfil">
         </a>
         <a onclick="activarOptions()" class="botonOptionNavbar">
             <i class="icofont-settings"></i>
             <ul id="ulInternoId" class="ulInterno">
-                <h1></h1>
-                <button (click)="logout()">Logout</button>
-                <li class="liInterno">Configuraciones</li>
-                <li class="liInterno">Cerrar sesion</li>
+                <li (click)="logout()" class="liInterno">Cerrar sesion</li>
             </ul>
         </a>
-        <li >Hello {{ user | json}}</li>!
     </div>
     <!-- No ha iniciado sesión  -->
     <ng-template #showLogin>
